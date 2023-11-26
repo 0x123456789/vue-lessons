@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- 
+    Example of v-bind, v-on, methods
+ -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lesson 3</title>
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+        }
+
+        .text-green {
+            color: green;
+        }
+
+        .text-red {
+            color: red;
+        }
+    </style>
+
+    <body>
+        <div id="app">
+           <section v-if="inCompleted.length > 0">
+                <h2 class="text-red">In Progress</h2>
+
+                <ul>
+                    <li 
+                        v-for="assigment in inCompleted"
+                        :key="assigment.id"
+                    >
+                        <label>
+                            {{assigment.name}}
+                            <input type="checkbox" v-model="assigment.completed">
+                        </label>
+                    </li>
+                </ul>
+
+           </section>
+
+           <section v-if="completed.length > 0">
+            <h2 class="text-green">Done</h2>
+
+            <ul>
+                <li 
+                    v-for="assigment in completed"
+                    :key="assigment.id"
+                
+                >
+                    <label>
+                        {{assigment.name}}
+                        <input type="checkbox" v-model="assigment.completed">
+                    </label>
+                </li>
+            </ul>
+            
+       </section>
+        </div>
+
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        assigments: [
+                            {id: 1, name: "Math", completed: false},
+                            {id: 2, name: "English", completed: false},
+                            {id: 3, name: "Philosophy", completed: false},
+                        ]
+                    }
+                },
+                computed: {
+                    completed() {
+                        return this.assigments.filter(a => a.completed)
+                    },
+                    inCompleted() {
+                        return this.assigments.filter(a => ! a.completed)
+                    }
+                },
+                methods: {
+                   
+                },
+            }).mount('#app');
+        </script>
+    </body>
+</html>
