@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lesson 1</title>
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <p>
+                <input type="text" v-model="greeding">
+            </p>
+
+            <p>
+                {{greeding}} {{greeding.length}}
+            </p>
+        </div>
+
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        greeding: "Hello world",
+                    }
+                },
+                mounted() {
+                    setTimeout(() => {
+                        this.greeding = "Changed from timer !"
+                    }, 3000)
+                },
+            }).mount('#app');
+        </script>
+    </body>
+</html>
