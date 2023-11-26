@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- 
+    Example of v-bind, v-on, methods
+ -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lesson 2</title>
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+        }
+
+        .text-green {
+            color: green;
+        }
+
+        .text-red {
+            color: red;
+        }
+    </style>
+
+    <body>
+        <div id="app">
+            <!-- This 2 lines are the same -->
+            <button v-bind:class="active ? 'text-green' : 'text-red'" v-on:click="toggle">Click me</button>
+            <button :class="active ? 'text-green' : 'text-red'" @click="toggle">Click me</button>
+        </div>
+
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        active: false,
+                    }
+                },
+                methods: {
+                    toggle() {
+                        this.active = ! this.active
+                    }
+                },
+            }).mount('#app');
+        </script>
+    </body>
+</html>
