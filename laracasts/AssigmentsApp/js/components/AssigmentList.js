@@ -1,7 +1,8 @@
 import Assigment from './Assigment.js'
+import AssigmentTags from './AssigmentTags.js';
 
 export default {
-    components: { Assigment },
+    components: { Assigment, AssigmentTags },
     template:
     `
     <section v-show="assigments.length">
@@ -10,15 +11,12 @@ export default {
             <span>{{ assigments.length }}</span>
         </h2>
 
-        <div class="flex gap-2">
-            <button v-for="tag in tags" @click="currentTag=tag" 
-                class="border rounded text-xs px-1 py-px"
-                :class="{
-                    'border-blue-500 text-blue-500': tag === currentTag
-                }">
-                {{tag}}
-            </button>
-        </div>
+        <assigment-tags
+                :initial-tags="assigments.map(a => a.tag)"
+                :current-tag="currentTag"
+                @change="currentTag= $event"
+        ></assigment-tags>
+
 
         <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
             <assigment 
@@ -47,10 +45,6 @@ export default {
             } else {
                 return this.assigments.filter(a => a.tag === this.currentTag);
             }
-        },
-
-        tags() {
-            return ['all', ... new Set(this.assigments.map(a => a.tag))];
         }
     }
     
