@@ -13,8 +13,7 @@ export default {
 
         <assigment-tags
                 :initial-tags="assigments.map(a => a.tag)"
-                :current-tag="currentTag"
-                @change="currentTag= $event"
+                v-model="currentTag"
         ></assigment-tags>
 
 
