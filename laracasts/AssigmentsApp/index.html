@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- 
+    Example of v-bind, v-on, methods
+ -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lesson 3</title>
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+        }
+
+        .text-green {
+            color: green;
+        }
+
+        .text-red {
+            color: red;
+        }
+    </style>
+
+    <body>
+        <div id="app"></div>
+
+        <script type="module">
+            import App from "./js/components/App.js"
+            
+            
+            Vue.createApp(App).mount('#app');
+        </script>
+    </body>
+</html>
+
+<!-- 
+<section v-show="assigments.length">
+    <h2 class="font-bold mb-2">{{ title }}</h2>
+
+    <ul class="border border-gray-600 divide-y divide-gray-600"></ul>
+        <assigment 
+            v-for="a in assigments"
+            :key="a.id"
+            :assigment="a"
+        ></assigment>
+    </ul>
+</section>
+
+<section class="space-y-6">
+    <assigment-list :assigments="filters.inProgress" title="In Progress"></assigment-list>
+    <assigment-list :assigments="filters.completed" title="Completed"></assigment-list>
+
+    <assigment-create @add="add"></assigment-create>
+
+</section>
+
+<form @submit.prevent="add">
+    <div class="border border-gray-600 text-black">
+        <input v-model="newAssigment" placeholder="New ..." class="p-2" />
+        <button type="submit" class="bg-white p-2 border-l">Add</button>
+    </div>
+</form>
+
+<li>
+    <label class="p-2">
+        {{assigment.name}}
+        <input type="checkbox" v-model="assigment.completed">
+    </label>
+</li> -->
